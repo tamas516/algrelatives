@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Rokoni kapcsolatok</title>
+
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+    <a th:href="@{/relatives}"
+       type="button"
+       class="btn btn-info">Vissza</a>
+    <h3 class="pt-5">Rokoni kapcsolatok</h3>
+
+    <div th:text="${name}"></div>
+
+    <table class="table table-borderless table-sm mt-2">
+        <thead>
+        <tr>
+            <th>Név</th>
+            <th>Kapcsolat típus</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="relative: ${relatives}">
+            <td th:text="${relative[0]}"></td>
+            <td th:text="${relative[1]}"></td>
+
+        </tr>
+        <tr th:each="relative2: ${relatives2}">
+            <td th:text="${relative2[0]}"></td>
+            <td th:text="${relative2[1]}"></td>
+
+        </tr>
+        <tr th:each="relative3: ${relatives3}">
+            <td th:text="${relative3[0]}"></td>
+            <td th:text="${relative3[1]}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>

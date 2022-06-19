@@ -17,32 +17,40 @@
 <div class="container">
     <h3 class="pt-5">Rokoni kapcsolatok</h3>
 
-    <a th:href="@{/relatives/profile}"
+    <form th:action="@{/relatives/search}" method="get">
+        <input type="text" name="keyword" placeholder="Find by Owner Name" size="50" >
+        <input type="submit" class="btn btn-info" >Search</input>
+    </form>
+
+
+    <a th:href="@{/relatives/adatokfelvitele1}"
        type="button"
-       class="btn btn-info">Profil</a>
+       class="btn btn-info">Új rokon hozzáadása</a>
 
-    <table class="table table-striped pt-5">
-        <caption>Rokonok listája</caption>
-        <thread>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Név</th>
+    <a th:href="@{/relatives/kapcsolat1}"
+       type="button"
+       class="btn btn-info">Új kapcsolat hozzáadása</a>
 
-            </tr>
-        </thread>
-        <tbody>
-        <tr th:each="relative: ${relatives}">
-            <th scope="row"
-                th:text="${relative[0]}" ></th>
-            <td th:text="${relative[1]}"></td>
-
-<!--                <a th:href="@{movie/profile}"-->
-<!--                   type="button"-->
-<!--          -->
-        </tr>
-        </tbody>
-    </table>
 </div>
+
+<div>
+    <form th:action="@{/relatives/persistMessage}" method="post">
+        <textarea name="msg" cols="40" rows="2"></textarea>
+        <br> <input type="submit" value="Save Message" />
+    </form>
+</div>
+<div>
+    <h2>Messages</h2>
+    <ul th:each="message : ${sessionMessages}">
+        <li th:text="${message[0]}">msg</li>
+    </ul>
+</div>
+<div>
+    <form th:action="@{/relatives/destroy}" method="post">
+        <input type="submit" value="Destroy Session" />
+    </form>
+</div>
+
 
 <script>
 
