@@ -169,7 +169,6 @@ public class RelativeController {
     }
 
 //
-//    public String persistMessage(Model model, @RequestParam("msg") String[] msg, HttpServletRequest request) {
 //        @SuppressWarnings("unchecked")
 //        List<String[]> messages = (List<String[]>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
 //        if (messages == null) {
