@@ -168,19 +168,6 @@ public class RelativeController {
 
     }
 
-//    @GetMapping("/persistMessage")
-//    public String process(Model model, HttpSession session) {
-//        @SuppressWarnings("unchecked")
-//        List<String[]> messages = (List<String[]>) session.getAttribute("MY_SESSION_MESSAGES");
-//
-//        if (messages == null) {
-//            messages = new ArrayList<>();
-//        }
-//        model.addAttribute("sessionMessages", messages);
-//
-//        return "relatives/list";
-//    }
-//
 //    @PostMapping("/persistMessage")
 //    public String persistMessage(Model model, @RequestParam("msg") String[] msg, HttpServletRequest request) {
 //        @SuppressWarnings("unchecked")
