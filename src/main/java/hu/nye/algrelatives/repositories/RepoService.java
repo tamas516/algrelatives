@@ -46,12 +46,42 @@ public class RepoService implements RelativeRepo{
   }
 
   @Override
+  public String getName1(String name) {
+    return repo.getName1(name);
+  }
+
+  @Override
+  public String getName2(String name2, String name3) {
+    return repo.getName2(name2, name3);
+  }
+
+  @Override
+  public String getName3(String name4, String name5) {
+    return repo.getName3(name4,name5);
+  }
+
+//  @Override
+//  public String getName3(String name3) {
+//    return repo.getName3(name3);
+//  }
+
+  @Override
   public List<String[]> getRel() {
     return repo.getRel();
   }
 
   @Override
-  public void insertNewRel(String neki, String o, String valakije, String sdfdname) {
+  public List<String[]> getRel1() {
+    return repo.getRel1();
+  }
+
+  @Override
+  public void insertNewRel(String neki, String o, String valakije, String fdname) {
+
+  }
+
+  @Override
+  public void insertNewRel1(String neki, String o, String valakije1, String fdname1) {
 
   }
 
@@ -63,6 +93,11 @@ public class RepoService implements RelativeRepo{
   @Override
   public String getfdname(String valakije) {
     return repo.getfdname(valakije);
+  }
+
+  @Override
+  public String getfdname1(String valakije1) {
+    return repo.getfdname1(valakije1);
   }
 
 //  @Override

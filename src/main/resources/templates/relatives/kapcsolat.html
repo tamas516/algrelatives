@@ -21,10 +21,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/relatives}">Főoldal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Kilépés</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Adatok felvitele</a>
+                    <a class="nav-link" th:href="@{/relatives/adatokfelvitele1}">Új rokon hozzáadása</a>
                 </li>
             </ul>
         </div>
@@ -51,16 +48,24 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <select class="form-select" aria-label="Default select example" name="valakije">
-                                <option selected>Valakije</option>
+                                <option selected>Valakije - közvetlen</option>
 <!--                                <option th:each="kapnev: ${kapnev}" th:text="${kapnev[0]}" th:value="${kapnev[0]}"></option>-->
                                 <option th:each="kapnev: ${kapnev}" th:text="${kapnev[0]}" th:value="${kapnev[0]}"></option>
                             </select>
                         </div>
+                        <div class="mb-3 col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="valakije1">
+                                <option selected>Valakije-közvetett</option>
+                                <!--                                <option th:each="kapnev: ${kapnev}" th:text="${kapnev[0]}" th:value="${kapnev[0]}"></option>-->
+                                <option th:each="kapnev: ${kapnev1}" th:text="${kapnev[0]}" th:value="${kapnev[0]}"></option>
+                            </select>
+                        </div>
                         <div class="mb-3 col-md-12">
-                            <input type="submit" class="btn btn-info" >Adatok felvitele</input>
+                            <input type="submit" class="btn btn-info" ></input>
                         </div>
                     </div>
-
+                    <div class="col-md-6 offset-md-3 text-danger" th:if="${errorMessage}" th:text="${errorMessage}">Error</div>
+                    <div class="col-md-6 offset-md-3 text-success" th:text="${siker}">Siker</div>
                 </form>
             </div>
         </div>

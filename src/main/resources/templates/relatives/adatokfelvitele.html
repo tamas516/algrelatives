@@ -21,10 +21,7 @@
                 <a class="nav-link active" aria-current="page" th:href="@{/relatives}">Főoldal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Kilépés</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Adatok felvitele</a>
+                <a class="nav-link" th:href="@{/relatives/kapcsolat1}">Új rokoni kapcsolat hozzáadása</a>
               </li>
             </ul>
           </div>
@@ -38,26 +35,27 @@
                       <h4 class="mb-4">Rokoni adat</h4>
                         <div class="row">
                             <div class="mb-3 col-md-6">
-                                <label>Name</label>
+                                <label>Név</label>
                                 <input type="text" name="name" class="form-control" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label>Birth Name</label>
+                                <label>Születési név</label>
                                 <input type="text" name="birth_name" class="form-control" required>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label>Address</label>
+                                <label>Lakcím</label>
                                 <input type="text" name="address" class="form-control" required>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label>Birth Place</label>
+                                <label>Születési hely</label>
                                 <input type="text" name="birth_place" class="form-control" required>
                             </div>
-                            <div class="form-group mb-3 col-md-4">
-                                <label>Date of Birth</label>
+                            <div class="mb-3 col-md-4">
+                                <label>Születési idő</label>
                                <input type="date" class="form-control" name="date_of_birth" placeholder="Date of Birth" required>
                             </div>
                             <div class="mb-3 col-md-6">
+                                <label>Nem</label>
                                 <select class="form-select" aria-label="Default select example" name="gender">
                                     <option selected>Neme</option>
                                     <option value="0">Férfi</option>
@@ -65,10 +63,11 @@
                                   </select>
                             </div>
                             <div class="mb-3 col-md-12">
-                                <input type="submit" class="btn btn-info" >Adatok felvitele</input>
+                                <input type="submit" class="btn btn-info" ></input>
                             </div>
                         </div>
-    
+                        <div class="col-md-6 offset-md-3 text-danger" th:if="${errorMessage}" th:text="${errorMessage}">Error</div>
+                        <div class="col-md-6 offset-md-3 text-success" th:text="${siker}">Siker</div>
                     </form>
                 </div>
             </div>
