@@ -38,9 +38,11 @@ public class RelativeController {
     @RequestMapping(path = "/search", method = RequestMethod.GET)
     public String listByName(final Model model, @Param("keyword") String keyword) {
         System.out.println("Keyword: "+keyword);
-        final String id = relativeRepo.getId(keyword);
+        final String id = relativeRepo.getRelativeId(keyword);
         if(id!=null)
         {
+            final List<String[]> relatives4 = relativeRepo.listByName4(id);
+            model.addAttribute("relatives4", relatives4);
             final List<String[]> relatives = relativeRepo.listByName(id);
             model.addAttribute("relatives", relatives);
             final List<String[]> relatives2 = relativeRepo.listByName2(id);
@@ -120,49 +122,46 @@ public class RelativeController {
 
         final String name3 = relativeRepo.getName3(neki,o);
 
-        if(name2==null && valakije1!=null && !neki.equals(o))
-        {
-            valakije=null;
-            if(valakije==null) {
+        final String name4 = relativeRepo.getRel2(valakije);
+        final String name5 = relativeRepo.getRel3(valakije1);
 
-                final String getfdname1 = relativeRepo.getfdname1(valakije1);
+        if(valakije1.equals(name5) && name2 == null && !neki.equals(o)) {
+                valakije = null;
+                if (valakije == null) {
 
-                relativeRepo.insertNewRel1(neki, o, getfdname1, valakije1);
+                    final String getfdname1 = relativeRepo.getIndirectNameId(valakije1);
 
-                final String siker = "Sikeres adatfelvitel!";
-                model.addAttribute("siker", siker);
+                    relativeRepo.insertNewRel1(neki, o, getfdname1, valakije1);
 
-                return "relatives/kapcsolat";
-            }
-            else
-            {
-                model.addAttribute("errorMessage","Csak egy kapcsolattípus lehet!");
-                return "relatives/kapcsolat";
-            }
+                    final String siker = "Sikeres közvetett kapcsolat!";
+                    model.addAttribute("siker", siker);
+
+                    return "relatives/kapcsolat";
+                } else {
+                    model.addAttribute("errorMessage", "Csak egy kapcsolattípus lehet!");
+                    return "relatives/kapcsolat";
+                }
         }
-        else  if(name3==null && valakije!=null && !neki.equals(o))
-        {
-            valakije1=null;
-            if(valakije1==null) {
+        else if(valakije.equals(name4) && name3 == null && !neki.equals(o)) {
+                valakije1 = null;
+                if (valakije1 == null) {
 
-                final String getfdname = relativeRepo.getfdname(valakije);
+                    final String getfdname = relativeRepo.getDirectNameId(valakije);
 
-                relativeRepo.insertNewRel(neki, o, getfdname, valakije);
+                    relativeRepo.insertNewRel(neki, o, getfdname, valakije);
 
-                final String siker = "Sikeres adatfelvitel!";
-                model.addAttribute("siker", siker);
+                    final String siker = "Sikeres közvetlen kapcsolat!";
+                    model.addAttribute("siker", siker);
 
-                return "relatives/kapcsolat";
-            }
-            else
-            {
-                model.addAttribute("errorMessage","Csak egy kapcsolattípus lehet!");
-                return "relatives/kapcsolat";
-            }
+                    return "relatives/kapcsolat";
+                } else {
+                    model.addAttribute("errorMessage", "Csak egy kapcsolattípus lehet!");
+                    return "relatives/kapcsolat";
+                }
         }
         else
         {
-            model.addAttribute("errorMessage","Különböző személyeket adhat meg!");
+            model.addAttribute("errorMessage","Sikertelen kapcsolat létrehozás!");
             return "relatives/kapcsolat";
         }
 
